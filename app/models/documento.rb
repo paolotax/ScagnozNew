@@ -1,3 +1,32 @@
+# == Schema Information
+#
+# Table name: documenti
+#
+#  id             :bigint           not null, primary key
+#  data_documento :date             not null
+#  numero         :string           not null
+#  stato          :string           default("bozza"), not null
+#  tipo           :integer          default("ordine_cliente"), not null
+#  totale_imposta :decimal(12, 2)   default(0.0), not null
+#  totale_lordo   :decimal(12, 2)   default(0.0), not null
+#  totale_netto   :decimal(12, 2)   default(0.0), not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  magazzino_id   :bigint
+#  soggetto_id    :bigint
+#
+# Indexes
+#
+#  index_documenti_on_magazzino_id     (magazzino_id)
+#  index_documenti_on_soggetto_id      (soggetto_id)
+#  index_documenti_on_stato            (stato)
+#  index_documenti_on_tipo_and_numero  (tipo,numero) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (magazzino_id => magazzini.id)
+#  fk_rails_...  (soggetto_id => soggetti.id)
+#
 class Documento < ApplicationRecord
   include AggiornaGiacenze
   include StatoDocumento

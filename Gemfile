@@ -67,4 +67,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "annotate", "~> 2.6"
+gem "annotaterb"

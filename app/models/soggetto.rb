@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: soggetti
+#
+#  id              :bigint           not null, primary key
+#  codice_fiscale  :string
+#  email           :string
+#  partita_iva     :string
+#  ragione_sociale :string           not null
+#  telefono        :string
+#  tipo            :string           default("generico"), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_soggetti_on_tipo_and_ragione_sociale  (tipo,ragione_sociale)
+#
 class Soggetto < ApplicationRecord
   has_many :documenti, dependent: :restrict_with_error
 

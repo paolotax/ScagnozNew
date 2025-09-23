@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: numeratori
+#
+#  id          :bigint           not null, primary key
+#  anno        :integer          not null
+#  progressivo :integer          default(0), not null
+#  tipo        :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_numeratori_on_anno_and_tipo  (anno,tipo) UNIQUE
+#
 class Numeratore < ApplicationRecord
   validates :anno, presence: true
   validates :progressivo, presence: true, numericality: { greater_than_or_equal_to: 0 }

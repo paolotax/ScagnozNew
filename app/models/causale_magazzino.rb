@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: causali_magazzino
+#
+#  id                 :bigint           not null, primary key
+#  attiva             :boolean          default(TRUE), not null
+#  codice             :string(6)        not null
+#  descrizione        :text
+#  di_sistema         :boolean          default(FALSE), not null
+#  nome               :string           not null
+#  richiede_cliente   :boolean          default(FALSE), not null
+#  richiede_fornitore :boolean          default(FALSE), not null
+#  segno_movimento    :integer          default(0), not null
+#  tipo_movimento     :integer          default("carico"), not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+# Indexes
+#
+#  index_causali_magazzino_on_codice  (codice) UNIQUE
+#
 class CausaleMagazzino < ApplicationRecord
   has_many :movimenti_magazzino, dependent: :restrict_with_error
 

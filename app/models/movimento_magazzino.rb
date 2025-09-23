@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: movimenti_magazzino
+#
+#  id                   :bigint           not null, primary key
+#  data_movimento       :date             not null
+#  note                 :text
+#  riferimento_esterno  :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  causale_magazzino_id :bigint           not null
+#  documento_id         :bigint
+#  magazzino_id         :bigint           not null
+#
+# Indexes
+#
+#  index_movimenti_magazzino_on_causale_magazzino_id  (causale_magazzino_id)
+#  index_movimenti_magazzino_on_documento_id          (documento_id)
+#  index_movimenti_magazzino_on_magazzino_id          (magazzino_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (causale_magazzino_id => causali_magazzino.id)
+#  fk_rails_...  (documento_id => documenti.id)
+#  fk_rails_...  (magazzino_id => magazzini.id)
+#
 class MovimentoMagazzino < ApplicationRecord
   include AggiornaGiacenze
 

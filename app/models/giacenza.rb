@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: giacenze
+#
+#  id           :bigint           not null, primary key
+#  quantita     :decimal(14, 3)   default(0.0), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  articolo_id  :bigint           not null
+#  magazzino_id :bigint           not null
+#
+# Indexes
+#
+#  index_giacenze_on_articolo_id                   (articolo_id)
+#  index_giacenze_on_magazzino_id                  (magazzino_id)
+#  index_giacenze_on_magazzino_id_and_articolo_id  (magazzino_id,articolo_id) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (articolo_id => articoli.id)
+#  fk_rails_...  (magazzino_id => magazzini.id)
+#
 class Giacenza < ApplicationRecord
   belongs_to :magazzino
   belongs_to :articolo
