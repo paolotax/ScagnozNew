@@ -1,0 +1,51 @@
+<div class="px-4 py-6 sm:px-0">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-900">Magazzini</h1>
+    <%= link_to "Nuovo Magazzino", new_magazzino_path, 
+        class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+
+  <div class="bg-white shadow overflow-hidden sm:rounded-md">
+    <% if @magazzini.any? %>
+      <ul class="divide-y divide-gray-200">
+        <% @magazzini.each do |magazzino| %>
+          <li>
+            <div class="px-4 py-4 flex items-center justify-between hover:bg-gray-50">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                    <span class="text-blue-600 font-medium text-sm"><%= magazzino.codice %></span>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <div class="text-sm font-medium text-gray-900"><%= magazzino.nome %></div>
+                  <div class="text-sm text-gray-500">Codice: <%= magazzino.codice %></div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= magazzino.attivo? ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                  <%= magazzino.attivo? ? 'Attivo' : 'Inattivo' %>
+                </span>
+                <div class="flex space-x-1">
+                  <%= link_to "Visualizza", magazzino, 
+                      class: "text-blue-600 hover:text-blue-900 text-sm font-medium" %>
+                  <%= link_to "Modifica", edit_magazzino_path(magazzino), 
+                      class: "text-indigo-600 hover:text-indigo-900 text-sm font-medium" %>
+                  <%= link_to "Elimina", magazzino, method: :delete, 
+                      data: { confirm: 'Sei sicuro?' }, 
+                      class: "text-red-600 hover:text-red-900 text-sm font-medium" %>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="text-center py-12">
+        <div class="text-gray-500 text-lg">Nessun magazzino trovato</div>
+        <%= link_to "Crea il primo magazzino", new_magazzino_path, 
+            class: "mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+      </div>
+    <% end %>
+  </div>
+</div>
