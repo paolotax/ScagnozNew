@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 2e01fa3b22cccde76e7b9deda43f088c57369390
+  revision: cf6b3107753a762b27bfcf9eefcfd9feb43f0242
   branch: main
   specs:
     actioncable (8.1.0.beta1)
@@ -155,7 +155,7 @@ GEM
     fugit (1.11.2)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
-    globalid (1.2.1)
+    globalid (1.3.0)
       activesupport (>= 6.1)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
